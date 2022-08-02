@@ -8,7 +8,7 @@ const Navbar = (props: Props) => {
   const links = [
     { href: "/", label: "Home" },
     { href: "/users", label: "Users" },
-    { href: "/Posts", label: "Posts" }
+    { href: "/posts", label: "Posts" }
   ]
 
   const renderLinks = () =>
