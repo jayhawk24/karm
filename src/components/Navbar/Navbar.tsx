@@ -14,13 +14,13 @@ const Navbar = (props: Props) => {
   const renderLinks = () =>
     links.map((link) => (
       <Link href={link.href} key={link.label}>
-        <p className="text-white font-semibold cursor-pointer ">{link.label}</p>
+        <p className="font-semibold cursor-pointer ">{link.label}</p>
       </Link>
     ))
 
   return (
     <nav>
-      <div className="hidden lg:flex md:flex w-full bg-purple font-semibold justify-around">
+      <div className="hidden lg:flex md:flex w-full bg-purple-500 font-semibold justify-around py-5">
         {renderLinks()}
       </div>
       <div className="flex sm:hidden fixed top-5 right-5">

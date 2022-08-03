@@ -2,11 +2,18 @@ import React from "react"
 import UserCard from "components/UserCard/UserCard"
 import Link from "next/link"
 import { User } from "types/types"
+import getUsers from "services/users"
+import { useQuery } from "@tanstack/react-query"
 
-type Props = {}
+type Props = {
+  users: User[]
+}
 
 const Users = (props: Props) => {
-  const users: User[] = []
+  const { data: users } = useQuery(["users"], getUsers, {
+    initialData: props.users
+  })
+
   return (
     <div className="w-full flex flex-col items-center">
       <h1 className="font-semibold text-xl my-5">Users</h1>
@@ -15,11 +22,11 @@ const Users = (props: Props) => {
           <UserCard key={user.id} user={user} />
         ))}
 
-        <div className="max-w-xs bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div className="max-w-xs bg-white rounded-lg border border-gray-200 shadow-md ">
           {/* add new user button */}
           <div className="p-12 flex justify-center">
             <Link href="/users/add">
-              <button className="z-20 inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5">
+              <button className="z-20 inline-block text-gray-500 ">
                 <svg
                   className="h-10 w-10"
                   fill="none"
@@ -41,6 +48,16 @@ const Users = (props: Props) => {
       </div>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const users = await getUsers()
+
+  return {
+    props: {
+      users
+    }
+  }
 }
 
 export default Users

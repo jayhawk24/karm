@@ -10,12 +10,12 @@ const UserCard = ({ user }: Props) => {
   const [openMenu, setOpenMenu] = React.useState(false)
 
   return (
-    <div className=" relative max-w-xs bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+    <div className=" relative max-w-xs bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="flex justify-end ">
         <button
           id="dropdownButton"
           data-dropdown-toggle="dropdown"
-          className="z-20 inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5"
+          className="z-20 inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-1.5"
           type="button"
           onClick={() => setOpenMenu(!openMenu)}
         >
@@ -33,7 +33,7 @@ const UserCard = ({ user }: Props) => {
         {openMenu && (
           <div
             id="dropdown"
-            className=" absolute z-10 w-24 text-base list-none bg-gray-light rounded divide-y divide-gray-100 shadow dark:bg-gray-700 block"
+            className=" absolute z-10 w-24 text-base list-none bg-gray-light rounded divide-y divide-gray-100 shadow block"
             data-popper-reference-hidden=""
             data-popper-escaped=""
             data-popper-placement="bottom"
@@ -42,7 +42,7 @@ const UserCard = ({ user }: Props) => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 "
                 >
                   Edit
                 </a>
@@ -50,7 +50,7 @@ const UserCard = ({ user }: Props) => {
               <li>
                 <a
                   href="#"
-                  className="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                  className="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 "
                 >
                   Delete
                 </a>
@@ -66,12 +66,8 @@ const UserCard = ({ user }: Props) => {
           src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
           alt=""
         />
-        <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-          {user.name}
-        </h5>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          {user.company.name}
-        </span>
+        <h5 className="mb-1 text-xl font-medium text-gray-900">{user.name}</h5>
+        <span className="text-sm text-gray-500">{user.company.name}</span>
       </div>
     </div>
   )
