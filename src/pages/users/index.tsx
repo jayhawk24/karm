@@ -1,12 +1,12 @@
-import React, { useContext } from "react"
-import { AppContext } from "components/AppContext/AppContext"
+import React from "react"
 import UserCard from "components/UserCard/UserCard"
 import Link from "next/link"
+import { User } from "types/types"
 
 type Props = {}
 
 const Users = (props: Props) => {
-  const { users } = useContext(AppContext)
+  const users: User[] = []
   return (
     <div className="w-full flex flex-col items-center">
       <h1 className="font-semibold text-xl my-5">Users</h1>
