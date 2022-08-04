@@ -2,7 +2,7 @@ import React from "react"
 import UserCard from "components/UserCard/UserCard"
 import Link from "next/link"
 import { User } from "types/types"
-import getUsers from "services/users"
+import { getUsers } from "services/users"
 import { useQuery } from "@tanstack/react-query"
 
 type Props = {
