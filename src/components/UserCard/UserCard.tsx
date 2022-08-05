@@ -1,5 +1,8 @@
+import { useQueryClient } from "@tanstack/react-query"
 import Image from "next/image"
+import Link from "next/link"
 import React from "react"
+import { deleteUser } from "services/users"
 import { User } from "types/types"
 
 type Props = {
@@ -8,14 +11,18 @@ type Props = {
 
 const UserCard = ({ user }: Props) => {
   const [openMenu, setOpenMenu] = React.useState(false)
+  const queryClient = useQueryClient()
 
+  const handleDelete = () => {
+    deleteUser(user.id).then(() => queryClient.invalidateQueries(["users"]))
+  }
   return (
     <div className=" relative max-w-xs bg-white rounded-lg border border-gray-200 shadow-md">
       <div className="flex justify-end ">
         <button
           id="dropdownButton"
           data-dropdown-toggle="dropdown"
-          className="z-20 inline-block text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-1.5"
+          className="z-20 inline-block text-gray-500 hover:text-white focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm p-1.5 hover:bg-stone-500"
           type="button"
           onClick={() => setOpenMenu(!openMenu)}
         >
@@ -33,27 +40,22 @@ const UserCard = ({ user }: Props) => {
         {openMenu && (
           <div
             id="dropdown"
-            className=" absolute z-10 w-24 text-base list-none bg-gray-light rounded divide-y divide-gray-100 shadow block"
-            data-popper-reference-hidden=""
-            data-popper-escaped=""
-            data-popper-placement="bottom"
+            className=" absolute right-9 z-10 w-24 text-base list-none bg-slate-100  rounded divide-y divide-gray-100 shadow block"
           >
             <ul className="py-1" aria-labelledby="dropdownButton">
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 "
-                >
-                  Edit
-                </a>
+                <Link href={`/users/${user.id}`}>
+                  <p className="cursor-pointer text-center block py-2 px-4 text-sm text-gray-700 hover:bg-gray-300 ">
+                    Edit
+                  </p>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 "
-                >
-                  Delete
-                </a>
+                <button onClick={handleDelete} className="w-full">
+                  <p className="block py-2 px-4 text-sm text-red-600 hover:bg-gray-300 ">
+                    Delete
+                  </p>
+                </button>
               </li>
             </ul>
           </div>
