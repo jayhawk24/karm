@@ -5,7 +5,7 @@ type Props = {
   children: React.ReactNode
 }
 
-const Layout = (props: Props) => {
+const Layout: React.FC<Props> = (props) => {
   return (
     <>
       <Navbar />
