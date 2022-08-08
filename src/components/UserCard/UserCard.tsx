@@ -61,16 +61,20 @@ const UserCard = ({ user }: Props) => {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-center pb-5">
-        <Image
-          height={64}
-          width={64}
-          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-          alt=""
-        />
-        <h5 className="mb-1 text-xl font-medium text-gray-900">{user.name}</h5>
-        <span className="text-sm text-gray-500">{user.company.name}</span>
-      </div>
+      <Link href={`/users/${user.id}/posts`}>
+        <div className="flex flex-col items-center pb-5 cursor-pointer">
+          <Image
+            height={64}
+            width={64}
+            src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+            alt=""
+          />
+          <h5 className="mb-1 text-xl font-medium text-gray-900">
+            {user.name}
+          </h5>
+          <span className="text-sm text-gray-500">{user.company.name}</span>
+        </div>
+      </Link>
     </div>
   )
 }
