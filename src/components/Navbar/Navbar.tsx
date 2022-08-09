@@ -6,9 +6,9 @@ type Props = {}
 const Navbar = (props: Props) => {
   const [isOpen, setIsOpen] = React.useState(false)
   const links = [
-    { href: "/", label: "Home" },
     { href: "/users", label: "Users" },
-    { href: "/posts", label: "Posts" }
+    { href: "/posts", label: "Posts" },
+    { href: "/todos", label: "Todos" }
   ]
 
   const renderLinks = () =>

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import PostCard from "components/PostCard"
+import Tabs from "components/Tabs/Tabs"
 import { GetServerSideProps } from "next"
 import { useRouter } from "next/router"
 import React, { FC } from "react"
@@ -23,7 +24,7 @@ const Posts: FC<Props> = (props) => {
 
   return (
     <div className="my-10">
-      <h1 className="font-bold text-xl">Posts</h1>
+      <Tabs />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
         {posts.map((post) => (
           <PostCard key={post.id} post={post} />
